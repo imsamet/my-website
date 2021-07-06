@@ -1,0 +1,23 @@
+{
+  "name": "my-website",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "icon": "svgr icons -d components/ --icon --replace-attr-values \"#5B5B5B=currentColor=\""
+  },
+  "dependencies": {
+    "classnames": "^2.3.1",
+    "next": "11.0.0",
+    "react": "17.0.2",
+    "react-dom": "17.0.2"
+  },
+  "devDependencies": {
+    "@svgr/cli": "^5.5.0",
+    "eslint": "7.29.0",
+    "eslint-config-next": "11.0.0"
+  }
+}
