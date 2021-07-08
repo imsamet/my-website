@@ -1,0 +1,25 @@
+.button{
+    display: inline-flex;
+    font-size: 14px;
+    background-color: transparent;
+    transition: var(--duration);
+    color: var(--white);
+}
+.hover:hover{
+    background-color: var(--black)!important;
+}
+.center{
+    align-items: center;
+    justify-content: center;
+}
+.pointer{
+    cursor: pointer;
+}
+
+.animation{
+    transform: rotateZ(180deg);
+}
+
+.button svg{
+    pointer-events: none;
+}

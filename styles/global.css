@@ -19,7 +19,7 @@
     --card: #FAFAFA;
     --white: #FFFFFF;
 
-    --duration: 400ms;
+    --duration: 200ms;
 
     --s: 576px;
     --m: 768px;
@@ -32,7 +32,6 @@
     border: 0;
     padding: 0;
     font-family: system-ui;
-    transition: var(--duration);
 }
 p{
     font-size: 14px;

@@ -54,3 +54,10 @@
     margin: 10px 0;
     font-size: 36px;
 }
+.iconBox svg{
+    color: var(--grey);
+    transition: var(--duration);
+}
+.iconBox svg:hover{
+    color: var(--black);
+}
