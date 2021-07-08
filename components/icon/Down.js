@@ -12,7 +12,7 @@ function SvgDown(props) {
     >
       <path
         d="M5.115 6L12 13.417 18.885 6 21 8.283 12 18 3 8.283 5.115 6z"
-        fill="#6C6C6C"
+        fill="currentColor"
       />
     </svg>
   );

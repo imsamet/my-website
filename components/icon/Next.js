@@ -10,7 +10,7 @@ function SvgNext(props) {
       xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
-      <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z" fill="#6C6C6C" />
+      <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z" fill="currentColor" />
     </svg>
   );
 }

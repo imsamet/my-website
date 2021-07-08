@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "icon": "svgr icons -d components/ --icon --replace-attr-values \"#5B5B5B=currentColor=\""
+    "icon": "svgr icons -d components/icon --icon --replace-attr-values \"#6C6C6C=currentColor=\""
   },
   "dependencies": {
     "classnames": "^2.3.1",

@@ -12,7 +12,7 @@ function SvgMicrosoft(props) {
     >
       <path
         d="M3 3h8.622v8.622H3V3zm9.378 0H21v8.622h-8.622V3zM3 12.378h8.622V21H3v-8.622zm9.378 0H21V21h-8.622v-8.622z"
-        fill="#6C6C6C"
+        fill="currentColor"
       />
     </svg>
   );

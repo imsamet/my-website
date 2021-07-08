@@ -1,0 +1,36 @@
+:root{
+    --purple: #C940EA;
+    --pink: #FF5F99;
+    --orange: #FF9057;
+    --some-orange: #FEBD35;
+    --yellow: #EBE840;
+    --green: #69EB5B;
+    
+    --light-purple: #c840ea26;
+    --light-pink: #ff5f9a4d;
+    --light-orange: #ff90574d;
+    --light-some-orange: #febe3540;
+    --light-yellow: #EBE8404d;
+    --light-green: #69EB5B4d;
+
+    --black: #3C3C3C;
+    --grey: #6C6C6C;
+    --light-grey: #D2D2D2;
+    --card: #FAFAFA;
+    --white: #FFFFFF;
+
+    --duration: 400ms;
+
+    --s: 576px;
+    --m: 768px;
+    --l: 992px;
+    --xl: 1200px;
+}
+
+*{
+    margin: 0;
+    border: 0;
+    padding: 0;
+    font-family: system-ui;
+    transition: var(--duration);
+}

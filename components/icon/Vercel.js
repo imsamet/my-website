@@ -10,7 +10,7 @@ function SvgVercel(props) {
       xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
-      <path d="M3 19h18L11.996 5 3 19z" fill="#6C6C6C" />
+      <path d="M3 19h18L11.996 5 3 19z" fill="currentColor" />
     </svg>
   );
 }

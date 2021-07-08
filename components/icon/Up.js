@@ -12,7 +12,7 @@ function SvgUp(props) {
     >
       <path
         d="M5.115 18L12 10.583 18.885 18 21 15.717 12 6l-9 9.717L5.115 18z"
-        fill="#6C6C6C"
+        fill="currentColor"
       />
     </svg>
   );
