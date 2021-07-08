@@ -34,3 +34,8 @@
     font-family: system-ui;
     transition: var(--duration);
 }
+p{
+    font-size: 14px;
+    font-weight: 200;
+    color: var(--grey);
+}
