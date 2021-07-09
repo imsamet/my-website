@@ -115,7 +115,7 @@ function Nav() {
 
                     <ul className={Style.ul}>
                         <li><Link href="/">Home</Link></li>
-                        <li><Link href="/">My Project</Link></li>
+                        <li><Link href="/my-project">My Project</Link></li>
                         <li><Link href="/">Blog</Link></li>
                         <li><Link href="/">About Me</Link></li>
                     </ul>

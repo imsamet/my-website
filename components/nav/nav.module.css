@@ -78,7 +78,7 @@
 .items svg{
     min-width: 20px;
     min-height: 20px;
-    padding: 0 39px;
+    margin: 0 39px;
     cursor: pointer;
     font-size: 20px;
 }

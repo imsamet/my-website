@@ -1,0 +1,27 @@
+.grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 8.333%);
+    box-sizing: border-box;
+    padding: 0 12px;
+    width: 100%;
+    max-width: 1600px;
+    margin: auto;
+}
+.star{
+    justify-content: start;
+}
+.end{
+    justify-content: end;
+}
+.center{
+    justify-content: center;
+}
+.around{
+    justify-content: space-around;
+}
+.between{
+    justify-content: space-between;
+}
+.evenly{
+    justify-content: space-evenly;
+}

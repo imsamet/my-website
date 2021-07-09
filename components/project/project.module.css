@@ -1,0 +1,79 @@
+.container{
+    padding: 50px;
+    background-color: var(--card);
+    border-radius: 5px;
+    margin-bottom: 50px;
+}
+.head{
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 0 5px 10px 0;
+    border: 0 solid var(--light-grey);
+    border-bottom-width: 1px;
+    margin-bottom: 30px;
+}
+.text h1{
+    margin-bottom: 10px;
+}
+.text span{
+    color: var(--grey)
+}
+.text span span:nth-child(1){
+    color: var(--purple);
+}
+.text span span:nth-child(2){
+    color: var(--pink);
+}
+.text span span:nth-child(3){
+    color: var(--orange);
+}
+.text span span:nth-child(4){
+    color: var(--some-orange);
+}
+.text span span:nth-child(5){
+    color: var(--yellow);
+}
+.text span span:nth-child(6){
+    color: var(--green);
+}
+.icon svg{
+    color: var(--grey);
+    cursor: pointer;
+    margin: 0 5px;
+    font-size: 24px;
+}
+.icon svg:hover{
+    color: var(--black);
+}
+.imgBox{
+    overflow-y: scroll;
+    display: flex;
+    grid-gap: 8px;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+}
+/* width */
+.imgBox::-webkit-scrollbar {
+    height: 5px;
+}
+
+/* Track */
+.imgBox::-webkit-scrollbar-track {
+    box-shadow: none; 
+}
+
+/* Handle */
+.imgBox::-webkit-scrollbar-thumb {
+    background: var(--light-grey); 
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+.imgBox::-webkit-scrollbar-thumb:hover {
+    background: var(--grey); 
+}
+.imgBox img{
+    width: auto;
+    height: 100px;
+}
