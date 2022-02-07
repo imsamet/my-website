@@ -7,15 +7,13 @@
     height: 100px;
     align-items: center;
     padding: 0 20px 0 60px;
-    background-color: var(--card);
     position: fixed;
-    bottom: 0;
-    right: 0;
     z-index: 10;
     transition: var(--duration);
 }
 .nav *{
     transition: var(--duration);
+    user-select: none;
 }
 
 /* Image Box */
@@ -54,20 +52,15 @@
 .icons *:hover{
     color: var(--black);
 }
-.icons span{
-    color: var(--grey);
-    cursor: pointer;
-    margin-right: 18px;
-    font-size: 14px;
-    font-weight: bold;
+.icons a{
+    margin: 0 5px;
+}
+.icons a:first-child{
+    margin-left: -2px;
 }
 .icons svg{
     color: var(--grey);
     cursor: pointer;
-    margin: 0 5px;
-}
-.icons a:first-child svg{
-    margin-left: -2px;
 }
 
 /* Items */
@@ -113,7 +106,6 @@
     box-sizing: border-box;
     width: 100px;
     height: 0;
-    background-color: var(--card);
     padding: 0;
     overflow: hidden;
 }
@@ -133,9 +125,21 @@
     margin: 5px 0;
     font-size: 11px;
     cursor: pointer;
+    font-weight: bold;
 }
-.context .selected{
-    color: var(--black);
+
+    /* Type */
+.small, .medium{
+    filter: drop-shadow(rgba(0, 0, 0, 0.08) 0px 1px 3px);
+    cursor: move;
+}
+.small:active, .medium:active{
+    filter: drop-shadow(rgba(0, 0, 0, 0.2) 0px 1px 3px);
+}
+/* --Large-- */
+.large{
+    bottom: 0!important;
+    right: 0!important;
 }
 
 /* --Medium-- */
@@ -147,6 +151,7 @@
 }
 .medium .imgBox{
     margin-left: 12px;
+    cursor: inherit;
 }
 .medium .icons{
     margin-bottom: 0px;
@@ -171,7 +176,6 @@
     right: 20px;
     border-radius: 5px;
     padding: 0;
-    cursor: move;
 }
 .small .imgBox{
     width: 0;
@@ -198,4 +202,67 @@
 }
 .small .context{
     right: 0;
+}
+
+
+    /* Color */
+/* Code */
+.code{
+    background-color: var(--card);
+}
+.code .context{
+    background-color: var(--card);
+}
+.code .context .selected{
+    color: var(--black);
+}
+.code .items svg{
+    color: var(--black);
+}
+.code .ul a{
+    color: var(--black);
+}
+
+
+/* Design */
+.design{
+    background-color: var(--light-purple);
+}
+.design .context{
+    background-color: var(--light-purple);
+}
+.design .items svg{
+    color: var(--purple);
+}
+.design .context .selected{
+    color: var(--purple);
+}
+.design .ul li:nth-child(1) a{
+    color: var(--purple);
+}
+.design .ul li:nth-child(2) a{
+    color: var(--pink);
+}
+.design .ul li:nth-child(3) a{
+    color: var(--orange);
+}
+.design .ul li:nth-child(4) a{
+    color: var(--some-orange);
+}
+
+/* Music */
+.music{
+    background-color: var(--light-some-orange);
+}
+.music .context{
+    background-color: var(--light-some-orange);
+}
+.music .context .selected{
+    color: var(--some-orange);
+}
+.music .items svg{
+    color: var(--some-orange);
+}
+.music .ul a{
+    color: var(--some-orange);
 }

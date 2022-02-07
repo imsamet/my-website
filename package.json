@@ -10,6 +10,7 @@
     "icon": "svgr icons -d components/icon --icon --replace-attr-values \"#6C6C6C=currentColor=\""
   },
   "dependencies": {
+    "axios": "^0.21.4",
     "classnames": "^2.3.1",
     "next": "11.0.0",
     "react": "17.0.2",

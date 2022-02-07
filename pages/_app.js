@@ -1,15 +1,15 @@
-import { useState } from 'react'
-import Context from '../store/navStore'
+import NavTypeStore from '../store/navTypeStore'
+import NavColorStore from '../store/navColorStore'
 
 import '../styles/global.css'
 
 function MyApp ({Component, pageProps}) {
 
-    const [navType, setNavType] = useState("Large")
-
-    return  <Context.Provider value={{navType, setNavType}}>
-                <Component {...pageProps}/>
-            </Context.Provider>
+    return  <NavTypeStore.Provider>
+                <NavColorStore.Provider>
+                    <Component {...pageProps}/>
+                </NavColorStore.Provider>
+            </NavTypeStore.Provider>
 }
 
 export default MyApp

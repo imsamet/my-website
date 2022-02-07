@@ -1,13 +1,11 @@
 .filter{
     display: flex;
     flex-direction:  column;
-    position: sticky;
     align-items: center;
     justify-content: center;
     background: var(--card);
     padding: 20px;
-    max-width: 195px;
-    max-height: 200px;
-    height: fit-content;
     border-radius: 5px;
+    max-width: 250px;
+    margin: auto;
 }

@@ -4,31 +4,22 @@ import Filter from '../../filter/filter'
 import Project from '../../project/project'
 import Nav from '../../nav/nav'
 
-
-import Grid from '../../grid/grid'
-import Col from '../../col/col'
-
 function myProject() {
     return(
         <>
             <div className={Style.container}>
-                <Grid center>
 
-                    <Col xs={2} sm={3} md={3} lg={3} xl={2}>
-                        <Filter/>
-                    </Col>
+                <div className={Style.content}>
+                    <Filter/>
+                </div>
 
-                    <Col xs={8} sm={8} md={7} lg={7} xl={7}>
-                        <Project/>
-                        <Project/>
-                        <Project/>
-                        <Project/>
-                        <Project/>
-                        <Project/>
-                        <Project/>
-                    </Col>
+                <div className={Style.content}>
+                    <Project/>
+                    <Project/>
+                    <Project/>
+                    <Project/>
+                </div>
 
-                </Grid>
             </div>
             <Nav/>
         </>

@@ -3,7 +3,7 @@ import Style from './project.module.css'
 import img1 from '../../img/img1.png'
 import img2 from '../../img/img2.png'
 
-function Project () {
+function Project ({head }) {
     return (
         <div className={Style.container}>
 

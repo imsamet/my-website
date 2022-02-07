@@ -1,7 +1,8 @@
-import { useContext, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import cn from 'classnames'
-import Context from '../../store/navStore'
+import NavTypeStore from '../../store/navTypeStore'
+import NavColorStore from '../../store/navColorStore'
 
 import Style from './nav.module.css'
 import img from '../../img/pp.jpg'
@@ -9,23 +10,24 @@ import { Figma, Github, Linkedin, Spotify, Soundcloud, Up } from '../icon/index'
 
 function Nav() {
 
-    const store = useContext(Context)
+    const {navType, setNavType} = NavTypeStore.useNavType()
+    const {navColor, setNavColor} = NavColorStore.useNavColor()
     const navRef = useRef()
     const [isContext, setContext] = useState(false)
-    
-    useEffect(() => {
-        const ref = navRef.current
+    let navPositionLocalStorage = typeof window !== 'undefined' && localStorage.getItem('nav-position-samet.com') ? JSON.parse(localStorage.getItem('nav-position-samet.com')) : {right: 0, bottom: 0}
 
-        if(ref.classList[1] != Style.small){// sadece Small modda hareket edebileceği için Small değilken, Small modda aldığı bottom ve right değerlerini sıfırlıyorum
-            navRef.current.style.bottom = null
-            navRef.current.style.right = null
-        }
+    useEffect(() => {// Context menü
+        
+        const ref = navRef.current
 
         if (!ref) return;
 
+        
+        // burada context menü açıkken nav dışında bir yere tıklandığında context menünün kapanmasını sağlıyoruz
+
         const toggle = (e) => {
 
-            if(!e.path) return false//Safari bog fix
+            if(!e.path) return false//Safari bug fix
 
             let i = true;
 
@@ -41,21 +43,39 @@ function Nav() {
             window.removeEventListener('click', toggle)
         }
 
-    })
+    }, [isContext])
 
     const changeContext = () => {
         setContext(!isContext)
     }
 
     const chanceType = (type) => {
-        store.setNavType(type)
+         setNavType(type)
+         setContext(false)
     }
 
-    let right, bottom
+    useEffect(() => {
+
+        console.log(navPositionLocalStorage)
+
+        if(navType == "Large"){// sadece Small ve Medium modda hareket edebileceği için Large mod için bottom ve right değerlerini sıfırlıyorum
+            navRef.current.style.bottom = null
+            navRef.current.style.right = null
+        }
+        
+        if(navType == "Small" || navType == "Medium"){// sadece Small modda hareket edebileceği için Small değilse nav'a bottom ve right değerlerini vermiyorum
+            navRef.current.style.transition = "0ms" // gecikme olduğunda düzgün hareket etmiyor, down anında kapatıp up anında tekrar eski haline getiriyorum.
+            navRef.current.style.right = `${navPositionLocalStorage.right}px`
+            navRef.current.style.bottom = `${navPositionLocalStorage.bottom}px`
+        }
+
+    }, [])
+
     let differenceX, differenceY
 
     const move = (e) => {
 
+        //Sayfanın sağ alt köşesi 0 noktası olacak şekilde hesaplanıyor.
         // Top ve Left olarak değil Bottom ve Right olarak konumlandıracağım için nav'ın sağ alt köşesinin (bottom right) değerini hesaplıyorum
         const refRight = window.innerWidth - navRef.current.offsetLeft - navRef.current.scrollWidth;
         const refBottom = window.innerHeight - navRef.current.offsetTop - navRef.current.scrollHeight;
@@ -73,16 +93,25 @@ function Nav() {
         !differenceX && (differenceX = mouseX - refRight)
         !differenceY && (differenceY = mouseY - refBottom)
 
-        //mouse konumundan farkı çıkartıp yeni konumu alıyorum
-        right = mouseX - differenceX
-        bottom = mouseY - differenceY
+        //mouse konumundan farkı çıkartıp yeni konumu alıyorum aynı zamanda sayfanın dışına çıkmasını da engelliyorum
+        const newPosition = 
+            {
+                right : 
+                        (mouseX - differenceX) <= 0 ? 0 :
+                        (mouseX - differenceX) >= (window.innerWidth - navRef.current.scrollWidth) ? window.innerWidth - navRef.current.scrollWidth : mouseX - differenceX,
+                bottom :
+                        (mouseY - differenceY) <= 0 ? 0 :
+                        (mouseY - differenceY) >= (window.innerHeight - navRef.current.scrollHeight) ? window.innerHeight - navRef.current.scrollHeight : mouseY - differenceY
+            }
 
+        localStorage.setItem('nav-position-samet.com', JSON.stringify(newPosition))
 
-        if(navRef.current.classList[1] == Style.small){// sadece Small modda hareket edebileceği için Small değilse nav'a bottom ve right değerlerini vermiyorum
-            navRef.current.style.transition = "0ms"
-            navRef.current.style.right = `${right}px`
-            navRef.current.style.bottom = `${bottom}px`
+        if(navType == "Small" || navType == "Medium"){// sadece Small modda hareket edebileceği için Small değilse nav'a bottom ve right değerlerini vermiyorum
+            navRef.current.style.transition = "0ms" // gecikme olduğunda düzgün hareket etmiyor, down anında kapatıp up anında tekrar eski haline getiriyorum.
+            navRef.current.style.right = `${newPosition.right}px`
+            navRef.current.style.bottom = `${newPosition.bottom}px`
         }
+
     }
 
     const add = () => {
@@ -97,7 +126,15 @@ function Nav() {
     }
 
     return(
-        <nav onMouseDown={add} onMouseUp={remove} className={cn(Style.nav, store.navType == "Medium" && Style.medium, store.navType == "Small" && Style.small)} ref={navRef}>
+        <nav 
+            onMouseDown={add} 
+            onMouseUp={remove} 
+            className={cn(
+                Style.nav, 
+                navColor == "Code" && Style.code, navColor == "Design" && Style.design, navColor == "Music" && Style.music, 
+                navType == "Large" && Style.large, navType == "Medium" && Style.medium, navType == "Small" && Style.small)} 
+            ref={navRef}
+        >
             <div className={Style.imgBox}>
                 <img src={img.src}/>
             </div>
@@ -127,9 +164,9 @@ function Nav() {
 
             <div className={cn(Style.context, isContext && Style.active)}>
                 <ul>
-                    <li className={cn(store.navType === "Large" && Style.selected)} onClick={() => {chanceType("Large")}}>Large</li>
-                    <li className={cn(store.navType === "Medium" && Style.selected)} onClick={() => {chanceType("Medium")}}>Medium</li>
-                    <li className={cn(store.navType === "Small" && Style.selected)} onClick={() => {chanceType("Small")}}>Small</li>
+                    <li className={cn(navType === "Large" && Style.selected)} onClick={() => {chanceType("Large")}}>Large</li>
+                    <li className={cn(navType === "Medium" && Style.selected)} onClick={() => {chanceType("Medium")}}>Medium</li>
+                    <li className={cn(navType === "Small" && Style.selected)} onClick={() => {chanceType("Small")}}>Small</li>
                 </ul>
             </div>
 
